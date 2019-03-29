@@ -11,7 +11,7 @@ gem "friendly_id"
 # dependencies
 group :dependencies do
   gem 'mysql2', '< 0.4'
-  gem "geokit-rails", "1.1.4"
+  gem "geokit-rails", "2.3.1"
   gem "image_science", "1.2.6"
   gem "recaptcha", :require => "recaptcha/rails"
   gem "oa-openid", "0.3.2"

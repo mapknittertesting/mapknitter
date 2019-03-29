@@ -57,8 +57,9 @@ GEM
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     geokit (1.13.1)
-    geokit-rails (1.1.4)
-      geokit (>= 1.5.0)
+    geokit-rails (2.3.1)
+      geokit (~> 1.5)
+      rails (>= 3.0)
     hike (1.2.3)
     httparty (0.16.2)
       multi_xml (>= 0.5.2)
@@ -189,7 +190,7 @@ DEPENDENCIES
   aws-sdk (~> 1.5.7)
   coveralls
   friendly_id
-  geokit-rails (= 1.1.4)
+  geokit-rails (= 2.3.1)
   image_science (= 1.2.6)
   jshintrb
   mysql2 (< 0.4)
