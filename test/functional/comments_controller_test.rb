@@ -50,7 +50,7 @@ class CommentsControllerTest < ActionController::TestCase
          })
 
     assert_redirected_to "/maps/" + @map.slug
-    assert_equal @comment.body, "I'm gonna troll you!"
+    assert_equal "I'm gonna troll you!", @comment.body
   end
 
   test "should not update comment if not commenter" do
@@ -65,9 +65,9 @@ class CommentsControllerTest < ActionController::TestCase
          })
 
     assert_redirected_to "/login"            
-    assert_not_equal @comment.body, "I'm gonna troll you!"
-    assert_equal @comment.body, "I'll just leave a comment, why don't I."
-    assert_equal flash[:error], "You do not have permissions to update that comment."
+    assert_not_equal "I'm gonna troll you!", @comment.body, 
+    assert_equal "I'll just leave a comment, why don't I.", @comment.body
+    assert_equal "You do not have permissions to update that comment.", flash[:error]
   end
 
   test "should not update comment if not logged in" do
@@ -81,9 +81,9 @@ class CommentsControllerTest < ActionController::TestCase
          })
 
     assert_redirected_to "/login"            
-    assert_not_equal @comment.body, "I'm gonna troll you!"
-    assert_equal @comment.body, "I'll just leave a comment, why don't I."
-    assert_equal flash[:error], "You do not have permissions to update that comment."
+    assert_not_equal "I'm gonna troll you!", @comment.body
+    assert_equal "I'll just leave a comment, why don't I.", @comment.body
+    assert_equal "You do not have permissions to update that comment.", flash[:error]
   end
 
   test "should delete comment" do
@@ -98,7 +98,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     assert_redirected_to "/maps/" + @map.slug
     assert_not_equal before_count, Comment.count
-    assert_equal flash[:notice], "Comment deleted."
+    assert_equal "Comment deleted.", flash[:notice]
   end
 
   test "should not delete comment if not commmenter" do
@@ -113,7 +113,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     assert_redirected_to "/maps/" + @map.slug
     assert_equal before_count, Comment.count
-    assert_equal flash[:error], "You do not have permission to delete that comment."
+    assert_equal "You do not have permission to delete that comment.", flash[:error]
   end
 
   test "should not delete comment if not logged in" do
@@ -127,7 +127,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     assert_redirected_to "/maps/" + @map.slug
     assert_equal before_count, Comment.count
-    assert_equal flash[:error], "You do not have permission to delete that comment."
+    assert_equal "You do not have permission to delete that comment.", flash[:error]
   end
 
   test "should not send email to author" do
