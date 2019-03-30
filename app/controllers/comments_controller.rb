@@ -2,6 +2,7 @@ class CommentsController < ApplicationController
 
   def create
     if logged_in?
+      puts current_user.id
       @map = Map.find params[:map_id]
 
       @comment = @map.comments.new(
@@ -38,7 +39,7 @@ class CommentsController < ApplicationController
       Comment.update(@comment.id, :body => params[:comment][:body])
       redirect_to "/maps/" + params[:map_id]
     else
-      flash[:error] = "You must be logged in to comment."
+      flash[:error] = "You do not have permissions to update that comment."
       redirect_to "/login"            
     end
   end
