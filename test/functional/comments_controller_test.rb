@@ -65,7 +65,7 @@ class CommentsControllerTest < ActionController::TestCase
          })
 
     assert_redirected_to "/login"            
-    assert_not_equal "I'm gonna troll you!", @comment.body, 
+    assert_not_equal "I'm gonna troll you!", @comment.body
     assert_equal "I'll just leave a comment, why don't I.", @comment.body
     assert_equal "You do not have permissions to update that comment.", flash[:error]
   end
