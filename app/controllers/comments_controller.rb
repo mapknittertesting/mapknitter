@@ -36,6 +36,7 @@ class CommentsController < ApplicationController
     @comment = Comment.find params[:id]
 
     if logged_in? && current_user.can_edit?(@comment)
+      puts("CAN EDIT\n\n")
       Comment.update(@comment.id, :body => params[:comment][:body])
       redirect_to "/maps/" + params[:map_id]
     else

@@ -39,8 +39,8 @@ class CommentsControllerTest < ActionController::TestCase
   end
 
   test "should update comment if commenter" do
-    @comment = comments(:three)
-    session[:user_id] = 3
+    @comment = comments(:four)
+    session[:user_id] = 4
 
     put(:update,
          id: @comment.id,
