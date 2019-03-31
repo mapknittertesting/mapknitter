@@ -49,7 +49,7 @@ class CommentsControllerTest < ActionController::TestCase
            body: "I'm gonna troll you!"
          })
 
-    assert_redirected_to "/maps/" + @map.id
+    assert_redirected_to "/maps/" + @map.slug
     assert_equal "I'm gonna troll you!", @comment.body
   end
 
@@ -96,7 +96,7 @@ class CommentsControllerTest < ActionController::TestCase
            map_id: @map.id
           )
 
-    assert_redirected_to "/maps/" + @map.id
+    assert_redirected_to "/maps/" + @map.slug
     assert_not_equal before_count, Comment.count
     assert_equal "Comment deleted.", flash[:notice]
   end
@@ -111,7 +111,7 @@ class CommentsControllerTest < ActionController::TestCase
            map_id: @map.id
           )
 
-    assert_redirected_to "/maps/" + @map.id
+    assert_redirected_to "/maps/" + @map.slug
     assert_equal before_count, Comment.count
     assert_equal "You do not have permission to delete that comment.", flash[:error]
   end
@@ -125,7 +125,7 @@ class CommentsControllerTest < ActionController::TestCase
            map_id: @map.id
           )
 
-    assert_redirected_to "/maps/" + @map.id
+    assert_redirected_to "/maps/" + @map.slug
     assert_equal before_count, Comment.count
     assert_equal "You do not have permission to delete that comment.", flash[:error]
   end
