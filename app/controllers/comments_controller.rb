@@ -33,13 +33,9 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find params[:id]
-    puts("\n\nasdasd\n\n")
-         puts(@comment)
-    puts(logged_in?)
-    puts(current_user.can_edit?(@comment))
-
     if logged_in? && current_user.can_edit?(@comment)
-      Comment.update(@comment.id, :body => params[:comment][:body])
+      a = Comment.update(@comment.id, :body => params[:comment][:body])
+      puts a
       redirect_to "/maps/" + params[:map_id]
     else
       flash[:error] = "You do not have permissions to update that comment."
