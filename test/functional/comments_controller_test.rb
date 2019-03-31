@@ -15,7 +15,7 @@ class CommentsControllerTest < ActionController::TestCase
     before_count = Comment.count
 
     post(:create, 
-      map_id: @map.slug,
+      map_id: @map.id,
       comment: {
         user_id: 1
     })
@@ -29,7 +29,7 @@ class CommentsControllerTest < ActionController::TestCase
     before_count = Comment.count
 
     post(:create, 
-      map_id: @map.slug,
+      map_id: @map.id,
       comment: {
         body: "I'm gonna troll you!"
     })
@@ -44,12 +44,12 @@ class CommentsControllerTest < ActionController::TestCase
 
     put(:update,
          id: @comment.id,
-         map_id: @map.slug,
+         map_id: @map.id,
          comment: {
            body: "I'm gonna troll you!"
          })
 
-    assert_redirected_to "/maps/" + @map.slug
+    assert_redirected_to "/maps/" + @map.id
     assert_equal "I'm gonna troll you!", @comment.body
   end
 
@@ -59,7 +59,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     put(:update,
          id: @comment.id,
-         map_id: @map.slug,
+         map_id: @map.id,
          comment: {
            body: "I'm gonna troll you!"
          })
@@ -75,7 +75,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     put(:update,
          id: @comment.id,
-         map_id: @map.slug,
+         map_id: @map.id,
          comment: {
            body: "I'm gonna troll you!"
          })
@@ -93,10 +93,10 @@ class CommentsControllerTest < ActionController::TestCase
 
     delete(:destroy,
            id: @comment.id,
-           map_id: @map.slug
+           map_id: @map.id
           )
 
-    assert_redirected_to "/maps/" + @map.slug
+    assert_redirected_to "/maps/" + @map.id
     assert_not_equal before_count, Comment.count
     assert_equal "Comment deleted.", flash[:notice]
   end
@@ -108,10 +108,10 @@ class CommentsControllerTest < ActionController::TestCase
 
     delete(:destroy,
            id: @comment.id,
-           map_id: @map.slug
+           map_id: @map.id
           )
 
-    assert_redirected_to "/maps/" + @map.slug
+    assert_redirected_to "/maps/" + @map.id
     assert_equal before_count, Comment.count
     assert_equal "You do not have permission to delete that comment.", flash[:error]
   end
@@ -122,10 +122,10 @@ class CommentsControllerTest < ActionController::TestCase
 
     delete(:destroy,
            id: @comment.id,
-           map_id: @map.slug
+           map_id: @map.id
           )
 
-    assert_redirected_to "/maps/" + @map.slug
+    assert_redirected_to "/maps/" + @map.id
     assert_equal before_count, Comment.count
     assert_equal "You do not have permission to delete that comment.", flash[:error]
   end
@@ -135,7 +135,7 @@ class CommentsControllerTest < ActionController::TestCase
     session[:user_id] = @user.id
 
     post(:create, 
-      map_id: @map.slug,
+      map_id: @map.id,
       comment: {
         body: "I'm gonna troll you!"
     })
@@ -149,7 +149,7 @@ class CommentsControllerTest < ActionController::TestCase
     session[:user_id] = 3
 
     post(:create, 
-      map_id: @map.slug,
+      map_id: @map.id,
       comment: {
         body: "I'm gonna troll you!"
     })
@@ -170,7 +170,7 @@ class CommentsControllerTest < ActionController::TestCase
     session[:user_id] = @chris.id
 
     post(:create, 
-      map_id: @map.slug,
+      map_id: @map.id,
       comment: {
         body: "I'm gonna troll you!"
     })
@@ -178,7 +178,7 @@ class CommentsControllerTest < ActionController::TestCase
     session[:user_id] = @joshua.id
 
     post(:create, 
-      map_id: @map.slug,
+      map_id: @map.id,
       comment: {
         body: "Yeah we'll see!"
     })

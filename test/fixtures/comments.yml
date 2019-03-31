@@ -6,11 +6,16 @@ one:
   map_id: 1
 
 two:
-  body: Here's an awesome comment
+  body: Here's an awesome comment.
   user_id: 2
   map_id: 1
   
 three:
-  body: Testing controllers here
+  body: Testing controllers here.
   user_id: 3
+  map_id: 1
+
+four:
+  body: Another one bites the dust
+  user_id: 4
   map_id: 1
