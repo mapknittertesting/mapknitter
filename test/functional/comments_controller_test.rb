@@ -15,7 +15,7 @@ class CommentsControllerTest < ActionController::TestCase
     before_count = Comment.count
 
     post(:create, 
-      map_id: @map.id,
+      map_id: @map.slug,
       comment: {
         user_id: 1
     })
@@ -29,7 +29,7 @@ class CommentsControllerTest < ActionController::TestCase
     before_count = Comment.count
 
     post(:create, 
-      map_id: @map.id,
+      map_id: @map.slug,
       comment: {
         body: "I'm gonna troll you!"
     })
@@ -44,7 +44,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     put(:update,
          id: @comment.id,
-         map_id: @map.id,
+         map_id: @map.slug,
          comment: {
            body: "I'm gonna troll you!"
          })
@@ -59,7 +59,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     put(:update,
          id: @comment.id,
-         map_id: @map.id,
+         map_id: @map.slug,
          comment: {
            body: "I'm gonna troll you!"
          })
@@ -75,7 +75,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     put(:update,
          id: @comment.id,
-         map_id: @map.id,
+         map_id: @map.slug,
          comment: {
            body: "I'm gonna troll you!"
          })
@@ -93,7 +93,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     delete(:destroy,
            id: @comment.id,
-           map_id: @map.id
+           map_id: @map.slug
           )
 
     assert_redirected_to "/maps/" + @map.slug
@@ -108,7 +108,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     delete(:destroy,
            id: @comment.id,
-           map_id: @map.id
+           map_id: @map.slug
           )
 
     assert_redirected_to "/maps/" + @map.slug
@@ -122,7 +122,7 @@ class CommentsControllerTest < ActionController::TestCase
 
     delete(:destroy,
            id: @comment.id,
-           map_id: @map.id
+           map_id: @map.slug
           )
 
     assert_redirected_to "/maps/" + @map.slug
@@ -135,7 +135,7 @@ class CommentsControllerTest < ActionController::TestCase
     session[:user_id] = @user.id
 
     post(:create, 
-      map_id: @map.id,
+      map_id: @map.slug,
       comment: {
         body: "I'm gonna troll you!"
     })
@@ -149,7 +149,7 @@ class CommentsControllerTest < ActionController::TestCase
     session[:user_id] = 3
 
     post(:create, 
-      map_id: @map.id,
+      map_id: @map.slug,
       comment: {
         body: "I'm gonna troll you!"
     })
@@ -170,7 +170,7 @@ class CommentsControllerTest < ActionController::TestCase
     session[:user_id] = @chris.id
 
     post(:create, 
-      map_id: @map.id,
+      map_id: @map.slug,
       comment: {
         body: "I'm gonna troll you!"
     })
@@ -178,7 +178,7 @@ class CommentsControllerTest < ActionController::TestCase
     session[:user_id] = @joshua.id
 
     post(:create, 
-      map_id: @map.id,
+      map_id: @map.slug,
       comment: {
         body: "Yeah we'll see!"
     })
