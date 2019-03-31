@@ -50,7 +50,7 @@ class CommentsControllerTest < ActionController::TestCase
          })
 
     assert_redirected_to "/maps/" + @map.slug
-    assert_equal "I'm gonna troll you!", @comment.body
+    assert_equal "I'm gonna troll you!", @map.comments.last.body
   end
 
   test "should not update comment if not commenter" do
