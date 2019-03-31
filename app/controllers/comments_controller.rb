@@ -2,7 +2,6 @@ class CommentsController < ApplicationController
 
   def create
     if logged_in?
-      puts current_user.id
       @map = Map.find params[:map_id]
 
       @comment = @map.comments.new(
@@ -34,9 +33,12 @@ class CommentsController < ApplicationController
 
   def update
     @comment = Comment.find params[:id]
+    puts("\n\nasdasd\n\n")
+         puts(@comment)
+    puts(logged_in?)
+    puts(current_user.can_edit?(@comment))
 
     if logged_in? && current_user.can_edit?(@comment)
-      puts("CAN EDIT\n\n")
       Comment.update(@comment.id, :body => params[:comment][:body])
       redirect_to "/maps/" + params[:map_id]
     else
